@@ -1,0 +1,11 @@
+.CMSPageContainer {
+    width: 75vw;
+    padding: 50px;
+}
+
+.containerPlanner {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

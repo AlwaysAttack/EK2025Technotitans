@@ -1,0 +1,23 @@
+.sidebar_div {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    width: 30vw;
+    height: 85vh;
+    padding-right: 15px;
+    
+    padding-left: 50px;
+}
+
+/* Убираем паддинг для заголовка с логотипом */
+.EventNaming {
+    padding-left: 0; /* Переопределяем паддинг для Box */
+}
+
+.sidebar li div {
+    padding-block: 10px;
+}
+
+.sidebar li {
+    border-bottom: 1px solid black;
+}

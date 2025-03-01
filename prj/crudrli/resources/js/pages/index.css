@@ -1,0 +1,12 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Manrope';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.headerPlanner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}

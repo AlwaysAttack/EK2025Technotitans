@@ -1,0 +1,12 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 100px;
+    padding-block: 25px;
+    height: 15vh;
+}
+
+.TEXEvents_Img {
+    width: 20vw;
+}

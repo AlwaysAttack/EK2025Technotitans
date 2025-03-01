@@ -1,0 +1,11 @@
+.contentCMSPage {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+.cmsHome {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
