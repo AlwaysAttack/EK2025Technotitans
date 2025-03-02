@@ -10,20 +10,18 @@ class EventController extends Controller
     public function store(Request $request)
     {
         
-        
-        // Сохранение данных в БД
-         Event::create([
+        $event=[
             'title' => $request->title,
             'description' => $request->description,
             'date' => $request->date,
             'start_time' => $request->start_time,
             'end_time' => $request->end_time,
             'type' => $request->type,
-        ]);
-        $events=$request;
-        // Перенаправление после успешного сохранения
-
-        return inertia('/sendntg',['events'=>$events])->with('success', 'Событие успешно создано!');
+        ];
+       
+        // Сохранение данных в БД
+         Event::create($event);
+        return Inertia::render('sendntg',['event'=>$event]);
         //return redirect()->route('events.index')->with('success', 'Событие успешно создано!');
     }
     public function show(){
@@ -39,5 +37,10 @@ class EventController extends Controller
         $event->delete();
 
         return redirect('/')->with('success', 'Событие успешно удалено!');
+    }
+    public function aevent(Request $request){
+            $eid=$request->query('eid');
+            $event=Event::findOrFail($eid);
+            return Inertia::render('modules/cmsGeneral/CMSGeneral',['event'=>$event]);
     }
 }

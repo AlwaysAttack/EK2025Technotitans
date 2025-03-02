@@ -27,7 +27,8 @@ async def handle_websocket_connection(websocket):
     active_connections.add(websocket)
     try:
         async for message in websocket:
-            await bot.send_message(chat_id=1660979386, text=f"*Доступно новое событие*: {message}", parse_mode='Markdown')
+                    await bot.send_message(chat_id=1660979386, text=f"🔔На нашем сайте доступно новое событие!")
+
     finally:
         active_connections.remove(websocket)
 

@@ -1,5 +1,5 @@
-from aiogram.types import KeyboardButton
-from aiogram.utils.keyboard import ReplyKeyboardBuilder
+from aiogram.types import KeyboardButton, InlineKeyboardButton
+from aiogram.utils.keyboard import ReplyKeyboardBuilder,InlineKeyboardBuilder
 #from dotmap import DotMap
 
 
@@ -11,6 +11,9 @@ builder = ReplyKeyboardBuilder()
 builder.add(KeyboardButton(text='🔔Отправка уведомлений'))
 send_notify_kb = builder.as_markup(resize_keyboard=True)
 
+builder = InlineKeyboardBuilder()
+builder.add(InlineKeyboardButton(text='🛠Поддержка', url='https://t.me/TexEvents'))
+help_kb = builder.as_markup(resize_keyboard=True)
 
 async def get_kb(type: str, event: str = ''):
     from handlers.user import db
