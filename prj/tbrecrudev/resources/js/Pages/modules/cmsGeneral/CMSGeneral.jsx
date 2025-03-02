@@ -1,13 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Typography, Button, Input, Stack, Divider } from '@mui/joy';
 import { useDropzone } from 'react-dropzone';
+import { Link } from '@inertiajs/react';
 
-const CMSGeneral = () => {
-    const [eventName, setEventName] = useState('');
-    const [eventDescription, setEventDescription] = useState('');
-    const [eventDate, setEventDate] = useState('');
-    const [logo, setLogo] = useState(null);
-    const [photos, setPhotos] = useState([]);
+const CMSGeneral = ({ event }) => {
+    // Инициализация состояний на основе переданного event
+    const [eventName, setEventName] = useState(event?.name || '');
+    const [eventDescription, setEventDescription] = useState(event?.description || '');
+    const [eventDate, setEventDate] = useState(event?.date || '');
+    const [startTime, setStartTime] = useState(event?.start_time || '');
+    const [endTime, setEndTime] = useState(event?.end_time || '');
+    const [eventType, setEventType] = useState(event?.type || '');
+    const [logo, setLogo] = useState(event?.logo || null);
+    const [photos, setPhotos] = useState(event?.photos || []);
+
+    // Обновление состояний при изменении event
+    useEffect(() => {
+        setEventName(event?.name || '');
+        setEventDescription(event?.description || '');
+        setEventDate(event?.date || '');
+        setStartTime(event?.start_time || '');
+        setEndTime(event?.end_time || '');
+        setEventType(event?.type || '');
+        setLogo(event?.logo || null);
+        setPhotos(event?.photos || []);
+    }, [event]);
 
     const { getRootProps: getLogoRootProps, getInputProps: getLogoInputProps } = useDropzone({
         accept: 'image/*',
@@ -25,18 +42,22 @@ const CMSGeneral = () => {
 
     const handleSave = () => {
         // Логика для сохранения изменений
-        console.log('Название:', eventName);
-        console.log('Описание:', eventDescription);
-        console.log('Дата:', eventDate);
-        console.log('Логотип:', logo);
-        console.log('Фотографии:', photos);
+        const updatedEvent = {
+            name: eventName,
+            description: eventDescription,
+            date: eventDate,
+            start_time: startTime,
+            end_time: endTime,
+            type: eventType,
+            logo: logo,
+            photos: photos,
+        };
+        console.log('Обновленный event:', updatedEvent);
     };
 
     return (
-        <Box sx={{ padding:'50px', width:'75vw' }}>
-
-            <Typography level='h4'>Основные настройки</Typography>
-
+        <Box sx={{ padding: '50px', width: '75vw' }}>
+            <Typography level='h4'>Описание события---{event.title}</Typography>
             <Divider></Divider>
 
             <Stack spacing={2} sx={{ marginTop: 2 }}>
@@ -44,10 +65,10 @@ const CMSGeneral = () => {
                 <Box>
                     <Typography level="h6">Название</Typography>
                     <Input
-                        value={eventName}
+                        value={event.title}
                         onChange={(e) => setEventName(e.target.value)}
                         fullWidth
-                        placeholder="Введите название мероприятия"
+                        placeholder="Название мероприятия"
                     />
                 </Box>
 
@@ -55,12 +76,12 @@ const CMSGeneral = () => {
                 <Box>
                     <Typography level="h6">Описание</Typography>
                     <Input
-                        value={eventDescription}
+                        value={event.description}
                         onChange={(e) => setEventDescription(e.target.value)}
                         fullWidth
                         multiline
                         rows={4}
-                        placeholder="Введите описание мероприятия"
+                        placeholder="Описание мероприятия"
                     />
                 </Box>
 
@@ -68,10 +89,43 @@ const CMSGeneral = () => {
                 <Box>
                     <Typography level="h6">Дата проведения</Typography>
                     <Input
-                        value={eventDate}
+                        value={event.date}
                         onChange={(e) => setEventDate(e.target.value)}
                         fullWidth
-                        placeholder="Введите дату проведения"
+                        placeholder="Дата проведения"
+                    />
+                </Box>
+
+                {/* Время начала */}
+                <Box>
+                    <Typography level="h6">Время начала</Typography>
+                    <Input
+                        value={event.start_time}
+                        onChange={(e) => setStartTime(e.target.value)}
+                        fullWidth
+                        placeholder="Время начала (например, 14:00)"
+                    />
+                </Box>
+
+                {/* Время окончания */}
+                <Box>
+                    <Typography level="h6">Время окончания</Typography>
+                    <Input
+                        value={event.end_time}
+                        onChange={(e) => setEndTime(e.target.value)}
+                        fullWidth
+                        placeholder="Время окончания (например, 18:00)"
+                    />
+                </Box>
+
+                {/* Тип мероприятия */}
+                <Box>
+                    <Typography level="h6">Тип мероприятия</Typography>
+                    <Input
+                        value={event.type}
+                        onChange={(e) => setEventType(e.target.value)}
+                        fullWidth
+                        placeholder="Тип мероприятия"
                     />
                 </Box>
             </Stack>
@@ -127,10 +181,11 @@ const CMSGeneral = () => {
                     </Box>
                 </Box>
             </Stack>
-
-            <Button variant="solid" sx={{ marginTop: 3 }} onClick={handleSave}>
-                Сохранить изменения
+            <Link href='/main'>
+            <Button variant="solid" sx={{ marginTop: 3 }} >
+                На главную
             </Button>
+            </Link>
         </Box>
     );
 };

@@ -9,6 +9,7 @@ import Dropdown from '@mui/joy/Dropdown';
 
 const CardPlannerTemplate = ({ eventId, title, time, onDelete }) => {
     return (
+        <Link href={`/aevent?eid=${eventId}`}>
         <Card invertedColors size="lg" orientation="horizontal" color="neutral"
             sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
             <Stack direction="row"
@@ -46,6 +47,8 @@ const CardPlannerTemplate = ({ eventId, title, time, onDelete }) => {
                 </Link>
             </Stack>
         </Card>
+        </Link>
+        
     );
 };
 

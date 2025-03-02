@@ -27,7 +27,11 @@ const CMSPlanner = ({ events }) => {
 
     return (
         <Box className="CMSPageContainer">
-            <Box className="headerPlanner">
+            <Box className="headerPlanner" sx={{
+    display: 'flex',
+    justifyContent: 'space-between',
+}}>
+                
                 <Typography level='h4'>Планировщик</Typography>
 
                 <Stack
@@ -58,7 +62,7 @@ const CMSPlanner = ({ events }) => {
                         alignItems: "center",
                     }}>
                     <Link href="/cms-cabinet/create-event">
-                        <Button>Добавить событие</Button>
+                        <Button >Добавить событие</Button>
                     </Link>
 
                     <IconButton onClick={handleMenuClick}>

@@ -14,7 +14,7 @@ use Inertia\Inertia;
 //         'phpVersion' => PHP_VERSION,
 //     ]);
 // });
-Route::get('/loginp', function () {
+Route::get('/', function () {
     return Inertia::render('login/LoginApp');
 });
 Route::get('/registerp', function () {
@@ -24,13 +24,13 @@ Route::get('/registerp', function () {
 
 
 
+Route::get( '/aevent', [EventController::class,'aevent']);
 
 
 
 
 
-
-Route::get('/', [EventController::class,'show']);
+Route::get('/main', [EventController::class,'show']);
 
 
 
@@ -47,7 +47,7 @@ Route::get('/cms-cabinet/create-event', function () {
 });
 
 
-Route::get('/sendntg', function () {
+Route::post('/sendntg', function () {
     return Inertia::render('sendntg');
 });
 

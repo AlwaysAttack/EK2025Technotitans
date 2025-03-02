@@ -61,9 +61,11 @@ const LoginApp = () => {
                         />
                     </Box>
 
-                    <Button type="submit" fullWidth>
+                    <Link href="/main">
+                    <Button  type="submit" fullWidth>
                         Войти
                     </Button>
+                    </Link>
 
                     <Typography sx={{ marginTop: 2, textAlign: 'center' }}>
                         Нет аккаунта? <Link href="/registerp">Зарегистрироваться</Link>
