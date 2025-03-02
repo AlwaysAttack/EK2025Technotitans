@@ -28,11 +28,11 @@ const CMSLayout = ({ children }) => {
   );
 };
 
-const CMShome = () => {
+const CMShome = ({events}) => {
   return (
     <CMSLayout>
       {/* Здесь можно отображать контент в зависимости от текущей страницы */}
-      <CMSGeneral /> {/* По умолчанию */}
+      <CMSPlanner events={events}/> {/* По умолчанию */}
     </CMSLayout>
   );
 };

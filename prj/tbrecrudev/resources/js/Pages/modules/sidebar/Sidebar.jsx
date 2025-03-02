@@ -25,7 +25,7 @@ const Sidebar = () => {
                     alt="Логотип"
                     sx={{ width: 56, height: 56 }} // Размер логотипа
                 />
-                <Typography level='h3'>80-летие Победы в Великой Отечественной войне</Typography>
+                <Typography level='h3' href='/80yo'>80-летие Победы в Великой Отечественной войне</Typography>
             </Box>
 
             <Divider></Divider>

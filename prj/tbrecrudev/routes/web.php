@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -29,18 +30,32 @@ Route::get('/registerp', function () {
 
 
 
-Route::get('/', function () {
-    return Inertia::render('CMS/CMShome');//main page
-});
+Route::get('/', [EventController::class,'show']);
 
 
 
-Route::get('/cms-cabinet/planner', function () {
-    return Inertia::render('modules/cmsPlanner/CMSPlanner');
-});
+
+
+Route::post('/downloading', [EventController::class,'store']);
+Route::get('/delete/{eid}', [EventController::class,'delete']);
+
+
+
+Route::get('/cms-cabinet/planner', [EventController::class,'show']);
 Route::get('/cms-cabinet/create-event', function () {
     return Inertia::render('modules/cmsPlanner/createActionEvent/CreateActionEvent');
 });
+
+
+Route::get('/sendntg', function () {
+    return Inertia::render('sendntg');
+});
+
+
+Route::get('/80yo', function () {
+   // return Inertia::render('UserEventPage');
+});
+
 
 
 

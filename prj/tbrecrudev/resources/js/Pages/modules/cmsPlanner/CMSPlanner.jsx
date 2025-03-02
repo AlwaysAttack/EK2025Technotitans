@@ -2,12 +2,11 @@ import { Link } from '@inertiajs/react';
 import './CMSPlanner.css';
 import Divider from '@mui/joy/Divider';
 import CardPlannerTemplate from '../card-modules/CardPlannerTemplate';
-import Sheet from '@mui/joy/Sheet';
 import { Box, IconButton, Stack, Typography, Button, List } from '@mui/joy';
 import { FavoriteBorder, Menu, ArrowBackIosNew, ArrowForwardIos } from '@mui/icons-material';
 import { useState } from 'react';
 
-const CMSPlanner = () => {
+const CMSPlanner = ({ events }) => {
     const [currentDate, setCurrentDate] = useState(new Date());
 
     const handlePreviousDate = () => {
@@ -71,8 +70,14 @@ const CMSPlanner = () => {
             <Divider></Divider>
 
             <List className="containerPlanner">
-                <CardPlannerTemplate />
-                <CardPlannerTemplate />
+                {events.map((event) => (
+                    <CardPlannerTemplate
+                        key={event.id}
+                        eventId={event.id}
+                        title={event.title}
+                        time={event.start_time + ' - ' + event.end_time}
+                    />
+                ))}
             </List>
         </Box>
     );
