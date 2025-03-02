@@ -2,10 +2,7 @@ import './header.css';
 import { CssVarsProvider } from '@mui/joy/styles';
 import Sheet from '@mui/joy/Sheet';
 import Stack from '@mui/joy/Stack';
-import TEXEvents from './../../../img/img/texevents.png';
-import PlusIco from './../../../img/svg/light_plus.svg';
-import checklistIco from './../../../img/svg/checklist.svg';
-import chatoutlineIco from './../../../img/svg/chat-outline.svg';
+import TEXEvents from './../../img/img/texevents.png';
 import Add from '@mui/icons-material/Add';
 
 import Chat from '@mui/icons-material/Chat';

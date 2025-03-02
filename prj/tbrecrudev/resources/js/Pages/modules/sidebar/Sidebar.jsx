@@ -35,7 +35,7 @@ const Sidebar = () => {
                 <List>
                     {/* Основные */}
                     <ListItem>
-                        <Link href="/" style={{ textDecoration: 'none', width: '100%' }}>
+                        <Link href="/uep" style={{ textDecoration: 'none', width: '100%' }}>
                             <ListItemButton>
                                 <ListItemContent>
                                     ОСНОВНЫЕ
@@ -46,7 +46,7 @@ const Sidebar = () => {
 
                     {/* Контактные данные */}
                     <ListItem>
-                        <Link href="/cms-cabinet/contacts" style={{ textDecoration: 'none', width: '100%' }}>
+                        <Link href="/contacts" style={{ textDecoration: 'none', width: '100%' }}>
                             <ListItemButton>
                                 <ListItemContent>
                                     КОНТАКТНЫЕ ДАННЫЕ
@@ -68,7 +68,7 @@ const Sidebar = () => {
 
                     {/* Работники */}
                     <ListItem>
-                        <Link href="/cms-cabinet/employees" style={{ textDecoration: 'none', width: '100%' }}>
+                        <Link href="/workers" style={{ textDecoration: 'none', width: '100%' }}>
                             <ListItemButton>
                                 <ListItemContent>
                                     РАБОТНИКИ

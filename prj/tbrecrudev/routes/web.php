@@ -40,6 +40,16 @@ Route::post('/downloading', [EventController::class,'store']);
 Route::get('/delete/{eid}', [EventController::class,'delete']);
 
 
+Route::get('/contacts', function () {
+    return Inertia::render('CMSContacts');
+});
+Route::get('/workers', function () {
+    return Inertia::render('CMSWorkers');
+});
+
+Route::get('/uep', function () {
+    return Inertia::render('UserEventPage');
+});
 
 Route::get('/cms-cabinet/planner', [EventController::class,'show']);
 Route::get('/cms-cabinet/create-event', function () {
