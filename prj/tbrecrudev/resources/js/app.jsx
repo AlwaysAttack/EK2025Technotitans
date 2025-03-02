@@ -4,9 +4,28 @@ import './bootstrap';
 import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createRoot } from 'react-dom/client';
-
+import { CssVarsProvider, extendTheme } from '@mui/joy/styles';
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
-
+const theme = extendTheme({
+    colorSchemes: {
+      light: {
+        palette: {
+          primary: {
+            50: '#FFE8D9',
+            100: '#FFD1B3',
+            200: '#FFB380',
+            300: '#FF944D',
+            400: '#FF7F26',
+            500: '#FF7300',
+            600: '#E66800',
+            700: '#CC5C00',
+            800: '#B34F00',
+            900: '#803800',
+          },
+        },
+      },
+    },
+  });
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
     resolve: (name) =>
@@ -14,9 +33,10 @@ createInertiaApp({
             `./Pages/${name}.jsx`,
             import.meta.glob('./Pages/**/*.jsx'),
         ),
+        
     setup({ el, App, props }) {
         const root = createRoot(el);
-
+        
         root.render(<App {...props} />);
     },
     progress: {

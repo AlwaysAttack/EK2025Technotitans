@@ -1,5 +1,6 @@
 import React from 'react';
 import './UserEventPage.css';
+import {  extendTheme } from '@mui/joy/styles';
 import Header from './modules/header/Header';
 import {
   Box,
@@ -11,7 +12,8 @@ import {
   Divider,
   Card,
   Stack,
-  Avatar
+  Avatar,
+  CssVarsProvider
 } from '@mui/joy';
 import Banner from './img/img/adadadad.jpg'; // Проверьте путь к изображению
 import VSLetImg from './img/img/VSLetImg.png'; // Проверьте путь к изображению
@@ -23,6 +25,26 @@ import ScheduleIcon from '@mui/icons-material/Schedule';
 import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 import CardPlannerTemplate from './modules/card-modules/CardPlannerTemplate'; // Проверьте путь к компоненту
 
+const theme = extendTheme({
+  colorSchemes: {
+    light: {
+      palette: {
+        primary: {
+          50: '#FFE8D9',
+          100: '#FFD1B3',
+          200: '#FFB380',
+          300: '#FF944D',
+          400: '#FF7F26',
+          500: '#FF7300',
+          600: '#E66800',
+          700: '#CC5C00',
+          800: '#B34F00',
+          900: '#803800',
+        },
+      },
+    },
+  },
+});
 const UserEventPage = () => {
   const events = [
     { title: 'Открытие', time: '7:00', description: 'Начало мероприятия' },
@@ -31,6 +53,9 @@ const UserEventPage = () => {
   ];
 
   return (
+    <CssVarsProvider theme={theme}>
+      
+    
     <Box sx={{ margin: '0 auto' }}>
       <Header />
       <img className='Banner' src={Banner} alt="Баннер мероприятия" />
@@ -204,6 +229,7 @@ const UserEventPage = () => {
         </Stack>
       </Box>
     </Box>
+    </CssVarsProvider>
   );
 };
 
